@@ -3,6 +3,7 @@ import logging
 from dateutil.relativedelta import relativedelta
 from django import forms
 
+from django.contrib.auth.forms import AuthenticationForm
 from django.utils.translation import ugettext_lazy as _
 from members.models import (SUB_RE_SCALE_DAY, SUB_RE_SCALE_MONTH,
                             SUB_RE_SCALE_YEAR, Member, SubscriptionPayment)
@@ -138,8 +139,20 @@ class SignUpForm(forms.ModelForm):
             'password'
         )
 
+
+
+class CustomLoginForm(AuthenticationForm):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        print(self.fields)
+        print("TEST")
+        self.fields['Användarnamn'].label = 'TEST'
+
+
 class SubscriptionPaymentChoiceField(forms.ModelChoiceField):
      def label_from_instance(self, obj):
         if not obj.first_name or not obj.last_name:
             return obj.username
         return f'{obj.first_name} {obj.last_name}'
+
+

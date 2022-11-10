@@ -18,9 +18,11 @@ Including another URLconf
 from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib import admin
+from django.contrib.auth.views import LoginView
 from django.urls import include, path
 
 from date import views as date
+from members import forms as form
 
 app_name = 'core'
 
@@ -28,6 +30,9 @@ urlpatterns = [
     path('', date.index, name='index'),
     path('news/', include('news.urls')),
     path('members/', include('django.contrib.auth.urls')),
+    path('members/login', LoginView.as_view(
+        authentication_form=form.CustomLoginForm),
+        name="login"),
     path('members/', include('members.urls')),
     path('archive/', include('archive.urls')),
     path('events/', include('events.urls')),

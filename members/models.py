@@ -28,7 +28,7 @@ MEMBERSHIP_TYPES = (
 
 
 class Member(AbstractBaseUser, PermissionsMixin):
-    username = models.CharField(_('Användarnamn'), unique=True, max_length=20, blank=False)
+    username = models.CharField(_('Användarnamn'), unique=True, max_length=128, blank=False)
     email = models.EmailField(_('E-postadress'), unique=True, blank=True, null=True)
     first_name = models.CharField(_('Förnamn'), max_length=30, blank=True)
     last_name = models.CharField(_('Efternamn'), max_length=30, blank=True)
