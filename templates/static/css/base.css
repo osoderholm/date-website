@@ -1,0 +1,64 @@
+html {
+    scroll-behavior: smooth;
+}
+
+html body{
+    background-color: var(--primaryColor);
+    color: var(--textColorLightish);
+    font-family: 'Josefin Sans', sans-serif;
+}
+
+.content img{
+    max-height: 35vh;
+    max-width: 100%;
+    /* keep img ratio correct */
+    width: auto !important;
+    height: auto !important;
+    border-radius: var(--defaultRadius);
+}
+
+/* Link colors */
+div a{
+    color: var(--linkColorSecondary);
+    display: inline-block;
+    text-decoration: none;
+}
+
+div a:hover{
+    transition: 0.3s;
+    color: var(--linkSecondaryHover);
+}
+/* ---- */
+
+.break-words{
+    word-break: break-all;
+    word-break: break-word;
+    hyphens: auto;
+}
+
+/* TEXT COLORS */
+.help-text{
+    color: var(--helpText);
+}
+
+.warning{
+    color: var(--warning);
+}
+/* ---- */
+
+.container-margin-top {
+    margin-top: 12vh;
+}
+
+.container-size{
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.content{
+    margin: 20px 2vw;
+    background-color: var(--primaryColorLight);
+    padding: var(--defaultPadding);
+    border-radius: var(--defaultRadius);
+}
+

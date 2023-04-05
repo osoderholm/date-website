@@ -43,7 +43,7 @@ def index(request):
         'aa_post': aa_post,
     }
 
-    return render(request, 'date/start.html', context)
+    return render(request, '../templates/date/start.html', context)
 
 
 def language(request, lang):

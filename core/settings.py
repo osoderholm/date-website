@@ -91,7 +91,7 @@ ROOT_URLCONF = 'core.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': ['core/templates'],
+        'DIRS': ['templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -211,7 +211,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'core/templates/static'),
+    os.path.join(BASE_DIR, '/templates/static'),
     # os.path.join(BASE_DIR, 'archive/static'),
     # os.path.join(BASE_DIR, 'date/static'),
     # os.path.join(BASE_DIR, 'events/static'),
@@ -250,7 +250,7 @@ else:
     PRIVATE_MEDIA_LOCATION = 'media/private'
     PUBLIC_MEDIA_LOCATION = 'media/public'
 
-STATIC_ROOT = os.path.join(PROJECT_DIR, 'static')
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 STATIC_URL = '/static/'
 
 LOGIN_URL = '/members/login'

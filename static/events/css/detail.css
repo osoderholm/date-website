@@ -1,0 +1,20 @@
+table {
+    border-collapse: collapse;
+}
+
+.event-full{
+    color: var(--helpText);
+}
+
+th {
+    padding-bottom: 1rem;
+}
+
+th, td {
+    text-align: left;
+    padding: 8px;
+}
+tr:hover {
+    transition: 200ms;
+    background-color: var(--primaryColorLighter);
+}

@@ -19,7 +19,7 @@ logger = logging.getLogger('date')
 
 class IndexView(ListView):
     model = Event
-    template_name = 'events/index.html'
+    template_name = '../templates/events/index.html'
 
     def get_context_data(self, **kwargs):
         context = super(IndexView, self).get_context_data(**kwargs)
@@ -34,15 +34,15 @@ class IndexView(ListView):
 
 class EventDetailView(DetailView):
     model = Event
-    template_name = 'events/detail.html'
+    template_name = '../templates/events/detail.html'
 
     def get_template_names(self):
-        template_name = 'events/detail.html'
+        template_name = '../templates/events/detail.html'
         logger.debug(self.get_context_data().get('event').title.lower())
         if self.get_context_data().get('event').title.lower() == 'årsfest':
-            template_name = 'events/arsfest.html'
+            template_name = '../templates/events/arsfest.html'
         if self.object.passcode and self.object.passcode != self.request.session.get('passcode_status', False):
-            template_name = 'events/event_passcode.html'
+            template_name = '../templates/events/event_passcode.html'
 
         return template_name
 
@@ -77,10 +77,10 @@ class EventDetailView(DetailView):
             if self.object.passcode == request.POST.get('passcode'):
                 self.request.session['passcode_status'] = self.object.passcode
                 if self.get_context_data().get('event').title.lower() == 'årsfest':
-                    return render(self.request, 'events/arsfest.html', self.get_context_data())
-                return render(self.request, 'events/detail.html', self.get_context_data())
+                    return render(self.request, '../templates/events/arsfest.html', self.get_context_data())
+                return render(self.request, '../templates/events/detail.html', self.get_context_data())
             else:
-                return render(self.request, 'events/event_passcode.html',
+                return render(self.request, '../templates/events/event_passcode.html',
                               self.get_context_data(passcode_error='invalid passcode'))
 
         if self.object.sign_up and (request.user.is_authenticated
@@ -120,7 +120,7 @@ class EventDetailView(DetailView):
 
     def form_invalid(self, form):
         if self.get_context_data().get('event').title.lower() == 'årsfest':
-            return render(self.request, 'events/arsfest.html', self.get_context_data(form=form))
+            return render(self.request, '../templates/events/arsfest.html', self.get_context_data(form=form))
         return render(self.request, self.template_name, self.get_context_data(form=form), status=400)
 
 

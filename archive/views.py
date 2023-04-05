@@ -32,7 +32,7 @@ def year_index(request):
         'type': "pictures",
         'year_albums': year_albumcount
     }
-    return render(request, 'archive/index.html', context)
+    return render(request, '../templates/archive/index.html', context)
 
 
 @user_passes_test(user_type, login_url='/members/login/')
@@ -43,7 +43,7 @@ def picture_index(request, year):
         'year': year,
         'collections': collections,
     }
-    return render(request, 'archive/picture_index.html', context)
+    return render(request, '../templates/archive/picture_index.html', context)
 
 
 @user_passes_test(user_type, login_url='/members/login/')
@@ -53,7 +53,7 @@ def exams_index(request):
         'type': "exams",
         'collections': collections,
     }
-    return render(request, 'archive/exams_index.html', context)
+    return render(request, '../templates/archive/exams_index.html', context)
 
 
 @user_passes_test(user_type, login_url='/members/login/')
@@ -74,7 +74,7 @@ def exam_upload(request, pk):
         'collection': collection,
         'exam_form': form,
     }
-    return render(request, 'archive/exam_upload.html', context)
+    return render(request, '../templates/archive/exam_upload.html', context)
 
 
 @user_passes_test(user_type, login_url='/members/login/')
@@ -90,14 +90,14 @@ def exam_archive_upload(request):
     context = {
         'exam_form': form,
     }
-    return render(request, 'archive/exam_upload.html', context)
+    return render(request, '../templates/archive/exam_upload.html', context)
 
 
 class FilteredDocumentsListView(UserPassesTestMixin, SingleTableMixin, FilterView):
     model = Document
     paginate_by = 15
     table_class = DocumentTable
-    template_name = 'archive/document_index.html'
+    template_name = '../templates/archive/document_index.html'
     filterset_class = DocumentFilter
 
     def get_table_data(self):
@@ -127,7 +127,7 @@ class FilteredExamsListView(UserPassesTestMixin, SingleTableMixin, FilterView):
     model = Document
     paginate_by = 15
     table_class = DocumentTable
-    template_name = 'archive/exam_detail.html'
+    template_name = '../templates/archive/exam_detail.html'
     filterset_class = ExamFilter
 
     def get_table_data(self):
@@ -176,7 +176,7 @@ def picture_detail(request, year, album):
         'pictures': pictures,
     }
 
-    return render(request, 'archive/detail.html', context)
+    return render(request, '../templates/archive/detail.html', context)
 
 
 @permission_required('archive.add_collection')
@@ -196,7 +196,7 @@ def upload(request):
     context = {
         'picture_form': form,
     }
-    return render(request, 'archive/upload.html', context)
+    return render(request, '../templates/archive/upload.html', context)
 
 
 def clean_media(request):

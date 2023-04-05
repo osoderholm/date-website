@@ -12,7 +12,7 @@ logger = logging.getLogger('date')
 
 
 class IndexView(generic.ListView):
-    template_name = 'ctf/index.html'
+    template_name = '../templates/ctf/index.html'
     context_object_name = 'latest_ctf_list'
 
 
@@ -23,7 +23,7 @@ class IndexView(generic.ListView):
 
 class DetailView(generic.DetailView):
     model = Ctf
-    template_name = 'ctf/detail.html'
+    template_name = '../templates/ctf/detail.html'
 
 
     def get_context_data(self, **kwargs):
@@ -74,16 +74,16 @@ def flag(request, ctf_slug, flag_slug):
 
         return HttpResponseForbidden()
     # render non post request
-    return render(request, 'ctf/flag_detail.html', context)
+    return render(request, '../templates/ctf/flag_detail.html', context)
 
 
 def form_valid(request, context):
     logger.debug('VALID')
     context['valid'] = '🎊🎊🎊 Rätt Flag! 🎊🎊🎊'
-    return render(request, 'ctf/flag_detail.html', context)
+    return render(request, '../templates/ctf/flag_detail.html', context)
 
 
 def form_invalid(request, context):
     logger.debug('INVALID')
     context['invalid'] = 'Fel Flag angiven, prova igen.'
-    return render(request, 'ctf/flag_detail.html', context)
+    return render(request, '../templates/ctf/flag_detail.html', context)

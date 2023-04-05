@@ -25,7 +25,7 @@ class EditView(View):
 
     def get(self, request):
         user = request.user
-        return render(request, 'userinfo.html', {"user": user})
+        return render(request, '../templates/userinfo.html', {"user": user})
 
 
 class CertificateView(View):
@@ -50,7 +50,7 @@ class CertificateView(View):
             'current_time': current_time,
             'icon': icon,
         }
-        return render(request, 'certificate.html', context)
+        return render(request, '../templates/certificate.html', context)
 
 
 def signup(request):
@@ -66,7 +66,7 @@ def signup(request):
             current_site = get_current_site(request)
             mail_subject = 'A new account has been created and required your attention.'
             print("Generated token: ", account_activation_token.make_token(user))
-            message = render_to_string('acc_active_email.html', {
+            message = render_to_string('../templates/acc_active_email.html', {
                 'user': user,
                 'domain': current_site.domain,
                 'uid': urlsafe_base64_encode(force_bytes(user.pk)),  # .decode(),
@@ -81,7 +81,7 @@ def signup(request):
             return render(request, 'registration/registration_complete.html')
     else:
         form = SignUpForm()
-    return render(request, 'signup.html', {'form': form})
+    return render(request, '../templates/signup.html', {'form': form})
 
 
 def activate(request, uidb64, token):
@@ -94,6 +94,6 @@ def activate(request, uidb64, token):
         user.is_active = True
         user.save()
         msg = _("Användare aktiverad")
-        return render(request, 'userinfo.html', {"user": user, "msg": msg})
+        return render(request, '../templates/userinfo.html', {"user": user, "msg": msg})
     else:
         return HttpResponse('Activation link is invalid!')

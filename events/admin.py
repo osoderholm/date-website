@@ -100,7 +100,7 @@ class EventAdmin(admin.ModelAdmin):
         context['event'] = event
         return TemplateResponse(
             request,
-            'events/list.html',
+            '../templates/events/list.html',
             context
         )
 
