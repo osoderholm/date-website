@@ -211,7 +211,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, '/templates/static'),
+    os.path.join(BASE_DIR, 'templates/static'),
     # os.path.join(BASE_DIR, 'archive/static'),
     # os.path.join(BASE_DIR, 'date/static'),
     # os.path.join(BASE_DIR, 'events/static'),
