@@ -1,6 +1,5 @@
+from django.conf import settings
 from django.forms import widgets
-
-from core import settings
 
 
 class PrettyJSONWidget(widgets.Textarea):

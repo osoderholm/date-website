@@ -1,0 +1,382 @@
+/* NEW STUFF */
+
+@import url('https://fonts.googleapis.com/css2?family=Amethysta&display=swap');
+
+:root {
+    --opacityColor: #11110ed3;
+    /*--opacityColor: rgba(223, 223, 223, 0.55);*/
+    --backdropBlur:  blur(10px);
+    --goldColor: #a28d3f;
+    --goldTextColor: #cbb14f;
+    --goldButtonHover: #d5b541;
+    --arsfest-font: 'Amethysta', serif;
+}
+
+.hidden{
+    display: none !important;
+}
+
+.container-md{
+    padding-top: 10vh;
+    min-height: 100vh;
+    font-family: var(--arsfest-font);
+    text-align: start;
+    align-content: start;
+    font-weight: bold;
+    background-position: top;
+    border-bottom: 3px solid var(--primaryColor);
+}
+
+.content{
+    position: relative;
+    background-color: rgba(0, 0, 0, 0.80);
+    border: 1px solid var(--goldColor);
+    color: var(--goldTextColor);
+    font-size: 0.8em;
+}
+
+.gold-right img{
+    position: absolute;
+    width: 70px !important;
+    height: 70px !important;
+    top: 0;
+    right: 0;
+}
+.gold-left img{
+    position: absolute;
+    width: 70px !important;
+    height: 70px !important;
+    top: 0;
+    left: 0;
+}
+
+.gold-right-bottom img{
+    position: absolute;
+    width: 70px !important;
+    height: 70px !important;
+    bottom: 0;
+    right: 0;
+    transform: scaleY(-1);
+}
+
+.gold-left-bottom img{
+    position: absolute;
+    width: 70px !important;
+    height: 70px !important;
+    bottom: 0;
+    left: 0;
+    transform: scaleY(-1);
+}
+
+  /* if backdrop support: very transparent and blurred */
+  @supports ((-webkit-backdrop-filter: blur(2em)) or (backdrop-filter: blur(2em))) {
+    .content {
+    background-color: var(--opacityColor);
+      -webkit-backdrop-filter: var(--backdropBlur);
+      backdrop-filter: var(--backdropBlur);
+    }
+  }
+
+.content a, .baal-content h2, .baal-content h1 {
+    color: var(--goldTextColor);
+}
+
+.baal-content h2, .baal-content h1 {
+    color: var(--goldTextColor);
+}
+
+.baal-content {
+    color: var(--goldTextColor);
+}
+
+/* fade animations start*/
+@keyframes fadeIn {
+0% {opacity:0;}
+100% {opacity:1;}
+}
+
+@-moz-keyframes fadeIn {
+0% {opacity:0;}
+100% {opacity:1;}
+}
+
+@-webkit-keyframes fadeIn {
+0% {opacity:0;}
+100% {opacity:1;}
+}
+
+@-o-keyframes fadeIn {
+0% {opacity:0;}
+100% {opacity:1;}
+}
+
+@-ms-keyframes fadeIn {
+0% {opacity:0;}
+100% {opacity:1;}
+}
+/* fade animations end */
+
+/* square animation start */
+@keyframes moveSquare {
+    0% {
+        opacity:0;
+        box-shadow: 0 0 10px var(--goldColor);
+        -webkit-box-shadow: 0 0 10px var(--goldColor);
+        -moz-box-shadow: 0 0 10px var(--goldColor);
+    }
+    20% {
+        box-shadow: 0 0 10px 3px var(--goldColor);
+        -webkit-box-shadow: 0 0 10px 3px var(--goldColor);
+        -moz-box-shadow: 0 0 10px 3px var(--goldColor);
+    }
+    40% {
+        box-shadow: 0 0 10px var(--goldColor);
+        -webkit-box-shadow: 0 0 10px var(--goldColor);
+        -moz-box-shadow: 0 0 10px var(--goldColor);
+    }
+    60% {
+        box-shadow: 0 0 10px 3px var(--goldColor);
+        -webkit-box-shadow: 0 0 10px 3px var(--goldColor);
+        -moz-box-shadow: 0 0 10px 3px var(--goldColor);
+    }
+    80% {
+        opacity: 1;
+        box-shadow: 0 0 0px var(--goldColor);
+        -webkit-box-shadow: 0 0 0px var(--goldColor);
+        -moz-box-shadow: 0 0 0px var(--goldColor);
+    }
+    100% {
+        opacity:0; 
+        transform: translateY(-400px); 
+        box-shadow: 0 0 10px 3px var(--goldColor);
+        -webkit-box-shadow: 0 0 10px 3px var(--goldColor);
+        -moz-box-shadow: 0 0 10px 3px var(--goldColor);
+    }
+    }
+/* square animation end */
+
+/* shake animation start */
+
+@keyframes shake {
+    0% { transform: translate(1px, 1px) rotate(0deg); }
+    10% { transform: translate(-1px, -2px) rotate(-1deg); }
+    20% { transform: translate(-3px, 0px) rotate(1deg); }
+    30% { transform: translate(3px, 2px) rotate(0deg); }
+    40% { transform: translate(1px, -1px) rotate(1deg); }
+    50% { transform: translate(-1px, 2px) rotate(-1deg); }
+    60% { transform: translate(-3px, 1px) rotate(0deg); }
+    70% { transform: translate(3px, 1px) rotate(-1deg); }
+    80% { transform: translate(-1px, -1px) rotate(1deg); }
+    90% { transform: translate(1px, 2px) rotate(0deg); }
+    100% { transform: translate(1px, -2px) rotate(-1deg); }
+  }
+
+  /*shake animation end*/
+  
+  /*spin animation start*/
+
+  @keyframes spin {
+    from{transform: rotate(0px);}
+    to{transform: rotate(720deg);}
+  }
+  
+  /*spin animation end*/
+
+  
+
+.header-box {
+    overflow: hidden;
+}
+
+.header-box .square{
+    position: absolute;
+    width: 2px;
+    height: 2px;
+    background-color: var(--goldTextColor);
+    animation: moveSquare 5s linear infinite;
+}
+
+.header-logo{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+    max-height: 20vh !important;
+    animation: fadeIn ease 5s;
+    -webkit-animation: fadeIn ease 5s;
+    -moz-animation: fadeIn ease 5s;
+    -o-animation: fadeIn ease 5s;
+    -ms-animation: fadeIn ease 5s;
+}
+
+.baal-header{
+    text-align: center;
+    animation: fadeIn ease 5s;
+    -webkit-animation: fadeIn ease 5s;
+    -moz-animation: fadeIn ease 5s;
+    -o-animation: fadeIn ease 5s;
+    -ms-animation: fadeIn ease 5s;
+}
+
+.baal-nav{
+    text-align: center;
+    margin: 8px;
+}
+
+.baal-nav a{
+    color: var(--goldTextColor);
+    margin: 5px;
+    padding: 10px;
+    background-color: var(--primaryColor);
+    border-radius: 5px;
+    transition: .3s;
+    border: 1px solid var(--goldColor);
+}
+
+.baal-nav a:hover{
+    background-color: var(--goldButtonHover);
+    color: var(--secondaryColor) !important;
+    box-shadow: 0 0 10px var(--goldColor);
+    -webkit-box-shadow: 0 0 10px var(--goldColor);
+    -moz-box-shadow: 0 0 10px var(--goldColor);
+}
+
+.baal-nav a:active{
+    transform: scale(1.05);
+}
+
+.header-logo:hover{
+    transform: scale(1.01);
+}
+
+.header-logo:active{
+    transform: scale(1.05);
+}
+
+
+.text-content div > *, .anmalan > *, .anmalda > *{
+    animation: fadeIn ease 2s;
+    -webkit-animation: fadeIn ease 2s;
+    -moz-animation: fadeIn ease 2s;
+    -o-animation: fadeIn ease 2s;
+    -ms-animation: fadeIn ease 2s;
+}
+
+.alert-danger, .errorlist, .warning{
+    color: rgb(201, 99, 88) !important;
+}
+
+footer{
+    display: none;
+}
+
+.navbar{
+    display: none;
+}
+
+form p > * {
+    width: 100%;
+}
+
+form label{
+    font-family: var(--arsfest-font) !important;
+}
+
+form select{
+    font-family: var(--arsfest-font) !important;
+}
+
+form input {
+    font-family: var(--arsfest-font) !important;
+}
+
+form button {
+    font-family: var(--arsfest-font) !important;
+    background-color: var(--primaryColor) !important;
+    color: var(--goldTextColor) !important;
+    border: 1px solid var(--goldColor) !important;
+}
+
+form button:hover {
+    background-color: var(--goldButtonHover) !important;
+    color: var(--secondaryColor) !important;
+    box-shadow: 0 0 10px var(--goldColor) !important;
+    -webkit-box-shadow: 0 0 10px var(--goldColor) !important;
+    -moz-box-shadow: 0 0 10px var(--goldColor) !important;
+}
+
+form button:active{
+    transform: scale(1.05);
+}
+
+.event-full{
+    color: #e4001b;
+}
+
+th {
+    padding-bottom: 1rem;
+}
+
+th, td {
+    text-align: left;
+    padding: 8px;
+}
+tr:hover {
+    transition: 200ms;
+    background-color: var(--goldButtonHover);
+    color: var(--textColorLight);
+}
+  
+  @keyframes glower {
+    0% {
+      background-position: 0 0;
+    }
+    
+    50% {
+      background-position: 400% 0;
+    }
+    
+    100% {
+      background-position: 0 0;
+    }
+  }
+
+  .inner {
+      background-color: var(--opacityColor);
+      padding: var(--defaultPadding);
+  }
+
+@media only screen and (min-width: 768px) {
+    .gold-right img{
+        position: absolute;
+        width: 100px !important;
+        height: 100px !important;
+        top: 0;
+        right: 0;
+    }
+    .gold-left img{
+        position: absolute;
+        width: 100px !important;
+        height: 100px !important;
+        top: 0;
+        left: 0;
+    }
+    
+    .gold-right-bottom img{
+        position: absolute;
+        width: 100px !important;
+        height: 100px !important;
+        bottom: 0;
+        right: 0;
+        transform: scaleY(-1);
+    }
+    
+    .gold-left-bottom img{
+        position: absolute;
+        width: 100px !important;
+        height: 100px !important;
+        bottom: 0;
+        left: 0;
+        transform: scaleY(-1);
+    }
+}

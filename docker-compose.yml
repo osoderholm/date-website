@@ -11,6 +11,7 @@ services:
     environment:
       - POSTGRES_PASSWORD=${DATE_DB_PASSWORD}
   web:
+    platform: "linux/amd64"
     build: .
     restart: always
     #igSheduler startup command (nohup python /code/social/igupdate.py &) &&
