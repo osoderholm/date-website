@@ -72,6 +72,11 @@ INSTALLED_APPS = [
     'django_filters',
     'bootstrap3',
     'django_cleanup',  # Should be places last
+    'django.contrib.sites',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'allauth.socialaccount.providers.github',
 ]
 
 MIDDLEWARE = [
@@ -176,6 +181,8 @@ AUTH_PASSWORD_VALIDATORS = [
 AUTHENTICATION_BACKENDS = (
     'members.backends.AuthBackend', # disable to skip auth against oldwww.abo.fi
     # 'django.contrib.auth.backends.ModelBackend',
+    'allauth.account.auth_backends.AuthenticationBackend',
+    'django.contrib.auth.backends.ModelBackend',
 )
 
 # LDAP config end

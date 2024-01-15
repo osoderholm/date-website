@@ -17,6 +17,7 @@ six
 instaloader
 schedule
 boto3
+django-allauth
 django-storages
 django-tables2
 django-filter

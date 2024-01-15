@@ -24,6 +24,11 @@ from .functionary import (get_distinct_years, get_functionary_roles, get_selecte
 from .models import Member, AlumniEmailRecipient, Functionary
 from .tokens import account_activation_token
 
+from allauth.socialaccount.models import SocialAccount
+from allauth.socialaccount.providers.github.views import GitHubOAuth2Adapter
+from allauth.socialaccount.providers.oauth2.client import OAuth2Client
+from allauth.socialaccount.providers.oauth2.views import OAuth2LoginView, OAuth2CallbackView
+
 logger = logging.getLogger('date')
 
 
@@ -248,3 +253,30 @@ class FunctionariesView(View):
 
 class CustomPasswordChangeView(PasswordChangeView):
     template_name = "registration/password_change_form.html"
+
+
+
+class GitHubLogin(OAuth2LoginView):
+    adapter_class = GitHubOAuth2Adapter
+    client_class = OAuth2Client
+
+
+class GitHubConnect(OAuth2CallbackView):
+    adapter_class = GitHubOAuth2Adapter
+    client_class = OAuth2Client
+
+    def get(self, request, *args, **kwargs):
+        if not request.user.is_authenticated:
+            return HttpResponseForbidden('User must be logged in to connect accounts')
+
+        # Continue with the normal OAuth2 flow
+        return super().get(request, *args, **kwargs)
+
+    def dispatch(self, request, *args, **kwargs):
+        # Handle the OAuth2 callback and link the social account to the current user
+        response = super().dispatch(request, *args, **kwargs)
+        social_account = SocialAccount.objects.get(user=request.user, provider='github')
+        # Link the social account to the current user
+        social_account.user = request.user
+        social_account.save()
+        return response
