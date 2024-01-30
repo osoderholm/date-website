@@ -1,7 +1,8 @@
 import os
 
-from .base_settings import *
+from .base_settings import * #NOQA
 
+# export DJANGO_SETTINGS_MODULE=MyDjangoApp.settings
 
 # Apps to include for the site 
 INSTALLED_APPS = [
@@ -15,18 +16,42 @@ INSTALLED_APPS = [
     'social',
     'polls',
     'ctf',
-] + INSTALLED_APPS_BASE
+    'daphne',
+    'archive.apps.ArchiveConfig',
+    'django.contrib.admin',
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.messages',
+    'django.contrib.staticfiles',
+    'admin_ordering',
+    'ckeditor',
+    'channels',
+    'storages',
+    'django_tables2',
+    'django_filters',
+    'bootstrap3',
+    'django_cleanup',
+]
 
 # Set the name to the "root" app of the site
+# PROJECT_NAME = env('project_name')
 PROJECT_NAME = 'date'
-PROJECT_TMPL = os.path.join(BASE_DIR, PROJECT_NAME, '/templates/')
+PROJECT_TMPL = PROJECT_NAME + '/templates/'
+
+# Static files (CSS, JavaScript, Images)
+# https://docs.djangoproject.com/en/2.1/howto/static-files/
+
+PROJECT_DIR = os.path.dirname(os.path.abspath(__file__))
+STATIC_ROOT = os.path.join(BASE_DIR, PROJECT_NAME, '/templates/static')
+STATIC_URL = '/static/'
 
 ROOT_URLCONF = PROJECT_NAME + '.urls'
 
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': ['core/templates', PROJECT_TMPL],
+        'DIRS': [PROJECT_TMPL],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -38,6 +63,7 @@ TEMPLATES = [
                 'staticpages.context_processors.get_pages',
                 'staticpages.context_processors.get_categories',
                 'staticpages.context_processors.get_urls',
+                PROJECT_NAME + '.template_variables.template_variables'
             ],
         },
     },
