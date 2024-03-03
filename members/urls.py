@@ -8,12 +8,14 @@ urlpatterns = [
     path('signup/', views.signup, name='signup'),
     path('activate/<uidb64>/<token>/', views.activate, name='activate'),
     path('password_reset/', views.CustomPasswordResetView.as_view(), name='password_reset'),
-    include('django.contrib.auth.urls'),
+    path('auth/', include([
+        path('', include('django.contrib.auth.urls')),
+        path('allauth/', include('allauth.urls')),
+    ])),
     path('password_change/', views.CustomPasswordChangeView.as_view(), name='custom_password_change'),
     path('info/', views.UserinfoView.as_view(), name='info'),
     path('cert/', views.CertificateView.as_view(), name='certificate'),
     path('alumn/signup', views.alumni_signup, name='alumni-signup'),
     path('funktionar/', views.FunctionaryView.as_view(), name='functionary'),
     path('funktionarer/', views.FunctionariesView.as_view(), name='functionaries'),
-    include('allauth.urls'),
 ]
